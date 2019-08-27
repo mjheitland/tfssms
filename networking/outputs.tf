@@ -20,8 +20,13 @@ output "tf_mha_subprv_ips" {
   value = aws_subnet.tf_mha_subprv.*.cidr_block
 }
 
-/*
-output "public_sg" {
-  value = "aws_security_group.tf_mha_public_sg.*.id"
+output "tf_mha_sgpub_id" {
+  value = aws_security_group.tf_mha_sgpub.*.id
 }
-*/
+
+output "tf_mha_sgpub_ingress" {
+  value = {
+    for ingress in aws_security_group.tf_mha_sgpub.ingress:
+    format("From %d", ingress.from_port) => format("To %d", ingress.to_port)
+  }
+}

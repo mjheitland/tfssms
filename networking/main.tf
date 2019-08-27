@@ -31,20 +31,21 @@ resource "aws_subnet" "tf_mha_subprv" {
   tags = { Name = "tf_mha_subprv_${count.index + 1}" }
 }
 
-/*
-resource "aws_security_group" "tf_public_sg" {
-  name        = "tf_public_sg"
+resource "aws_security_group" "tf_mha_sgpub" {
+  name        = "tf_mha_sgpub"
   description = "Used for access to the public instances"
-  vpc_id      = aws_vpc.tf_vpc.id
-
+  vpc_id      = aws_vpc.tf_mha_vpc.id
   dynamic "ingress" {
-    for_each = var.service_ports
+    for_each = [ for s in var.service_ports: {
+      from_port = s.from_port
+      to_port = s.to_port
+    }]
     content {
-      from_port   = ingress.value
-      to_port     = ingress.value
+      from_port   = ingress.value.from_port
+      to_port     = ingress.value.to_port
       protocol    = "tcp"
       cidr_blocks = [var.accessip]
     }
+
   }
 }
-*/

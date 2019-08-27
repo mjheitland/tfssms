@@ -3,11 +3,14 @@ variable "vpc_cidr" {
     type = string
 }
 variable "public_cidrs" { 
-    type = "list" 
+    type = list
 }
 variable "private_cidrs" { 
-    type = "list" 
+    type = list
 }
 variable "accessip" {
     type = string
+}
+variable "service_ports" {
+    type = list
 }

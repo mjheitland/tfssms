@@ -8,6 +8,16 @@ private_cidrs = [
   "10.50.202.0/24"
 ]
 accessip    = "0.0.0.0/0"
+service_ports = [
+  {
+    from_port = 22,
+    to_port   = 22
+  },
+  {
+    from_port = 80,
+    to_port   = 80
+  }
+]
 
 #--- compute
 #public_key_path = "~/.ssh/id_rsa.pub"
