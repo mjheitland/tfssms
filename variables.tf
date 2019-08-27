@@ -1,9 +1,4 @@
-#--- root/variables.tf ---
-variable "aws_region" {
-    type = string
-}
-
-#--- networking variables
+#--- root/variables.tf
 variable "vpc_cidr" {
     type = string
 }
@@ -20,6 +15,7 @@ variable "service_ports" {
     type = list
 }
 
+/*
 #-------compute variables
 variable "key_name" {
     type = string
@@ -34,3 +30,4 @@ variable "instance_count" {
     type = number
     default = 1
 }
+*/

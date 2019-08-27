@@ -1,15 +1,15 @@
 #--- root/main.tf ---
 provider "aws" {
-    region = "${var.aws_region}"
 }
 
 # deploy networking resources
 module "networking" {
-  source       = "./networking"
-  vpc_cidr     = "var.vpc_cidr"
-  public_cidrs = "var.public_cidrs"
-  private_cidrs = "var.private_cidrs"
-  accessip     = "var.accessip"
+  source          = "./networking"
+  vpc_cidr        = var.vpc_cidr
+  public_cidrs    = var.public_cidrs
+  private_cidrs   = var.private_cidrs
+  accessip        = var.accessip
+  service_ports   = var.service_ports
 }
 
 /*

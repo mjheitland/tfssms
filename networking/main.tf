@@ -35,6 +35,7 @@ resource "aws_security_group" "tf_mha_sgpub" {
   name        = "tf_mha_sgpub"
   description = "Used for access to the public instances"
   vpc_id      = aws_vpc.tf_mha_vpc.id
+  tags = { Name = "tf_mha_sgpub" }
   dynamic "ingress" {
     for_each = [ for s in var.service_ports: {
       from_port = s.from_port
@@ -44,8 +45,7 @@ resource "aws_security_group" "tf_mha_sgpub" {
       from_port   = ingress.value.from_port
       to_port     = ingress.value.to_port
       protocol    = "tcp"
-      cidr_blocks = [var.accessip]
+      cidr_blocks = [ingress.value.to_port == 27017 ? "0.1.2.3/32" : var.accessip]
     }
-
   }
 }

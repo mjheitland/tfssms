@@ -9,14 +9,18 @@ private_cidrs = [
 ]
 accessip    = "0.0.0.0/0"
 service_ports = [
-  {
+  { # ssh
     from_port = 22,
     to_port   = 22
   },
-  {
+  { # web http
     from_port = 80,
     to_port   = 80
-  }
+  },
+  { # documentdb
+    from_port = 27017, 
+    to_port   = 27017
+  } 
 ]
 
 #--- compute
