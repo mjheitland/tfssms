@@ -1,32 +1,36 @@
 #--- networking/outputs.tf ---
 
-output "tf_mha_vpc_id" {
-  value = aws_vpc.tf_mha_vpc.id
+output "vpc_id" {
+  value = aws_vpc.tfmh_vpc.id
 }
 
-output "tf_mha_subpub_ids" {
-  value = aws_subnet.tf_mha_subpub.*.id
+output "igw_id" {
+  value = aws_internet_gateway.tfmh_igw.id
 }
 
-output "tf_mha_subpub_ips" {
-  value = aws_subnet.tf_mha_subpub.*.cidr_block
+output "subpub_ids" {
+  value = aws_subnet.tfmh_subpub.*.id
 }
 
-output "tf_mha_subprv_ids" {
-  value = aws_subnet.tf_mha_subprv.*.id
+output "subpub_ips" {
+  value = aws_subnet.tfmh_subpub.*.cidr_block
 }
 
-output "tf_mha_subprv_ips" {
-  value = aws_subnet.tf_mha_subprv.*.cidr_block
+output "subprv_ids" {
+  value = aws_subnet.tfmh_subprv.*.id
 }
 
-output "tf_mha_sgpub_id" {
-  value = aws_security_group.tf_mha_sgpub.*.id
+output "subprv_ips" {
+  value = aws_subnet.tfmh_subprv.*.cidr_block
 }
 
-output "tf_mha_sgpub_ingress" {
+output "sgpub_ids" {
+  value = aws_security_group.tfmh_sgpub.*.id
+}
+
+output "sgpub_ingress" {
   value = {
-    for ingress in aws_security_group.tf_mha_sgpub.ingress:
+    for ingress in aws_security_group.tfmh_sgpub.ingress:
     format("From %d", ingress.from_port) => format("To %d", ingress.to_port)
   }
 }

@@ -1,29 +1,40 @@
 #--- root/outputs.tf ---
-
-output "tf_mha_vpc_id" {
-  value = module.networking.tf_mha_vpc_id
+output "project_name" {
+  value = var.project_name
 }
 
-output "tf_mha_subpub_ids" {
-  value = module.networking.tf_mha_subpub_ids
+#--- networking
+output "vpc_id" {
+  value = module.networking.vpc_id
+}
+output "igw_id" {
+  value = module.networking.igw_id
+}
+output "subpub_ids" {
+  value = module.networking.subpub_ids
+}
+output "subpub_ips" {
+  value = module.networking.subpub_ips
+}
+output "subprv_ids" {
+  value = module.networking.subprv_ids
+}
+output "subprv_ips" {
+  value = module.networking.subprv_ips
+}
+output "sgpub_ids" {
+  value = module.networking.sgpub_ids
+}
+output "sgpub_ingress" {
+  value = module.networking.sgpub_ingress
 }
 
-output "tf_mha_subpub_ips" {
-  value = module.networking.tf_mha_subpub_ips
+/*
+#--- compute
+output "server_id" {
+  value = module.compute.server_id
 }
-
-output "tf_mha_subprv_ids" {
-  value = module.networking.tf_mha_subprv_ids
+output "server_public_ip" {
+  value = module.compute.server_public_ip
 }
-
-output "tf_mha_subprv_ips" {
-  value = module.networking.tf_mha_subprv_ips
-}
-
-output "tf_mha_sgpub_id" {
-  value = module.networking.tf_mha_sgpub_id
-}
-
-output "tf_mha_sgpub_ingress" {
-  value = module.networking.tf_mha_sgpub_ingress
-}
+*/
