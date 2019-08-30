@@ -28,7 +28,7 @@ resource "aws_instance" "tfmh_server" {
   vpc_security_group_ids  = [var.sg_id]
   user_data               = data.template_file.tfmh_userdata.*.rendered[0]
   tags = { 
-    name = format("%s_server", var.project_name)
+    name = format("%s_server_%d", var.project_name, count.index)
     project_name = var.project_name
   }
 }
