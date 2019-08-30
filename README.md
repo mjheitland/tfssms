@@ -25,12 +25,14 @@ This Terraform project shows how to specify and deploy the following components:
     
     terraform validate
     
-    terraform plan -out=tfplan -var project_name=la-terraform
+    terraform plan -out=tfplan
     
     terraform apply -auto-approve tfplan
     
     terraform apply -auto-approve
     
     terraform destroy -auto-approve
+
+## To delete Terraform state files
+    rm -rfv **/.terraform # remove all recursive subdirectories
     
-    terraform plan -out=tfplan -var 'key_name=tfkey' -var 'public_key_path=~/.ssh/id_rsa.pub'
