@@ -64,6 +64,12 @@ resource "aws_security_group" "tfmh_sg" {
       cidr_blocks = [ingress.value.to_port == 27017 ? "0.1.2.3/32" : var.access_ip]
     }
   }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   tags = { 
     name = format("%s_sgpub", var.project_name)
