@@ -76,7 +76,8 @@ resource "aws_security_group" "tfmh_sg" {
     project_name = var.project_name
   }
 }
-
+# Public route table, allows all outgoing traffic to go the the internet gateway.
+# https://www.terraform.io/docs/providers/aws/r/route_table.html?source=post_page-----1a7fb9a336e9----------------------
 resource "aws_route_table" "tfmh_rtpub" {
   vpc_id = "${aws_vpc.tfmh_vpc.id}"
   route {
@@ -89,13 +90,21 @@ resource "aws_route_table" "tfmh_rtpub" {
   }
 }
 # connect every public subnet with our public route table
-resource "aws_route_table_association" "tfmh_rtassoc" {
+resource "aws_route_table_association" "tfmh_rtpubassoc" {
   count = length(var.subpub_cidrs)
 
   subnet_id      = "${aws_subnet.tfmh_subpub.*.id[count.index]}"
   route_table_id = "${aws_route_table.tfmh_rtpub.id}"
 }
 
+# If the subnet is not associated with any route by default it will be 
+# associated automatically with this Private Route table.
+# That's why we don't need an aws_route_table_association for private route tables.
+# When Terraform first adopts the Default Route Table, it immediately removes all defined routes. 
+# It then proceeds to create any routes specified in the configuration. 
+# This step is required so that only the routes specified in the configuration present in the 
+# Default Route Table.
+# https://www.terraform.io/docs/providers/aws/r/default_route_table.html
 resource "aws_default_route_table" "tfmh_rtprv" {
   default_route_table_id = "${aws_vpc.tfmh_vpc.default_route_table_id}"
   tags = {
