@@ -6,16 +6,17 @@ resource "aws_vpc" "tfmh_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = { 
-    name          = format("%s_vpc", var.project_name)
-    project_name  = var.project_name
+    name = format("%s_vpc", var.project_name)
+    project_name = var.project_name
   }
 }
 
 resource "aws_internet_gateway" "tfmh_igw" {
   vpc_id = aws_vpc.tfmh_vpc.id
+
   tags = { 
-    name          = format("%s_igw", var.project_name)
-    project_name  = var.project_name
+    name = format("%s_igw", var.project_name)
+    project_name = var.project_name
   }
 }
 
@@ -26,21 +27,24 @@ resource "aws_subnet" "tfmh_subpub" {
   cidr_block              = var.subpub_cidrs[count.index]
   map_public_ip_on_launch = true
   availability_zone       = data.aws_availability_zones.available.names[count.index]
+  
   tags = { 
-    name          = format("%s_subpub_%d", var.project_name, count.index + 1)
-    project_name  = var.project_name
+    name = format("%s_subpub_%d", var.project_name, count.index + 1)
+    project_name = var.project_name
   }
 }
 
 resource "aws_subnet" "tfmh_subprv" {
   count                   = length(var.subprv_cidrs)
+
   vpc_id                  = aws_vpc.tfmh_vpc.id
   cidr_block              = var.subprv_cidrs[count.index]
   map_public_ip_on_launch = true
   availability_zone       = data.aws_availability_zones.available.names[count.index]
+
   tags = { 
-    name          = format("%s_subprv_%d", var.project_name, count.index + 1)
-    project_name  = var.project_name
+    name = format("%s_subprv_%d", var.project_name, count.index + 1)
+    project_name = var.project_name
   }
 }
 
@@ -48,10 +52,6 @@ resource "aws_security_group" "tfmh_sg" {
   name        = "tfmh_sgpub"
   description = "Used for access to the public instances"
   vpc_id      = aws_vpc.tfmh_vpc.id
-  tags = { 
-    name          = format("%s_sgpub", var.project_name)
-    project_name  = var.project_name
-  }
   dynamic "ingress" {
     for_each = [ for s in var.service_ports: {
       from_port = s.from_port
@@ -63,5 +63,37 @@ resource "aws_security_group" "tfmh_sg" {
       protocol    = "tcp"
       cidr_blocks = [ingress.value.to_port == 27017 ? "0.1.2.3/32" : var.access_ip]
     }
+  }
+
+  tags = { 
+    name = format("%s_sgpub", var.project_name)
+    project_name = var.project_name
+  }
+}
+
+resource "aws_route_table" "tfmh_rtpub" {
+  vpc_id = "${aws_vpc.tfmh_vpc.id}"
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = "${aws_internet_gateway.tfmh_igw.id}"
+  }
+  tags = {
+    name = format("%s_tfmh_rtpub", var.project_name)
+    project_name = var.project_name
+  }
+}
+# connect every public subnet with our public route table
+resource "aws_route_table_association" "tfmh_rtassoc" {
+  count = length(var.subpub_cidrs)
+
+  subnet_id      = "${aws_subnet.tfmh_subpub.*.id[count.index]}"
+  route_table_id = "${aws_route_table.tfmh_rtpub.id}"
+}
+
+resource "aws_default_route_table" "tfmh_rtprv" {
+  default_route_table_id = "${aws_vpc.tfmh_vpc.default_route_table_id}"
+  tags = {
+    name = format("%s_tfmh_rtprv", var.project_name)
+    project_name = var.project_name
   }
 }

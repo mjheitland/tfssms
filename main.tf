@@ -18,9 +18,10 @@ module "networking" {
 module "compute" {
   source          = "./compute"
   
-  key_name          = var.key_name
-  public_key_path   = var.public_key_path
-  instance_type     = var.instance_type
-  subpub_ids        = module.networking.subpub_ids
-  sg_id             = module.networking.sg_id
+  project_name    = var.project_name
+  key_name        = var.key_name
+  public_key_path = var.public_key_path
+  instance_type   = var.instance_type
+  subpub_ids      = module.networking.subpub_ids
+  sg_id           = module.networking.sg_id
 }

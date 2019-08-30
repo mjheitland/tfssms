@@ -1,5 +1,8 @@
 #--- compute/variables.tf
-
+variable "project_name" {
+  description = "project name is used as resource tag"
+  type        = string
+}
 variable "key_name" {
   description = "name of keypair to access ec2 instances"
   type        = string

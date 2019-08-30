@@ -14,3 +14,9 @@ output "subprv_ids" {
 output "sg_id" {
   value = aws_security_group.tfmh_sg.id
 }
+output "rtpub_ids" {
+  value = aws_route_table.tfmh_rtpub.*.id
+}
+output "rtprv_ids" {
+  value = aws_default_route_table.tfmh_rtprv.*.id
+}

@@ -19,8 +19,17 @@ output "subprv_ids" {
 output "sg_id" {
   value = module.networking.sg_id
 }
+output "rtpub_ids" {
+  value = module.networking.rtpub_ids
+}
+output "rtprv_ids" {
+  value = module.networking.rtprv_ids
+}
 
 #--- compute
+output "keypair_id" {
+  value = module.compute.keypair_id
+}
 output "server_ids" {
   value = module.compute.server_ids
 }

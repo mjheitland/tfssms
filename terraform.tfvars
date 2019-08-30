@@ -25,7 +25,6 @@ service_ports = [
 ]
 
 #--- compute
-instance_count  = 1
 key_name        = "tfmh_key"
 public_key_path = "~/.ssh/id_rsa.pub"
 instance_type   = "t2.micro"
