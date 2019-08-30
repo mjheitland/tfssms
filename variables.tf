@@ -7,11 +7,11 @@ variable "vpc_cidr" {
   description = "separate vpc for this project"
   type        = string
 }
-variable "public_cidrs" { 
+variable "subpub_cidrs" { 
   description = "cidr blocks for public subnets"
   type        = list(string)
 }
-variable "private_cidrs" { 
+variable "subprv_cidrs" { 
   description = "cidr blocks for private subnets"
   type        = list(string)
 }
@@ -26,19 +26,17 @@ variable "service_ports" {
     to_port   = number
   }))
 }
-/*
+
 #-------compute variables
-variable "instance_count" {
-    type = number
-    default = 1
-}
 variable "key_name" {
-    type = string
+  description = "name of keypair to access ec2 instances"
+  type        = string
 }
 variable "public_key_path" {
-    type = string
+  description = "file path on deployment machine to public rsa key to access ec2 instances"
+  type        = string
 }
 variable "instance_type" {
-    type = string
+  description = "type of ec2 instance"
+  type        = string
 }
-*/

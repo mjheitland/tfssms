@@ -13,28 +13,17 @@ output "igw_id" {
 output "subpub_ids" {
   value = module.networking.subpub_ids
 }
-output "subpub_ips" {
-  value = module.networking.subpub_ips
-}
 output "subprv_ids" {
   value = module.networking.subprv_ids
 }
-output "subprv_ips" {
-  value = module.networking.subprv_ips
-}
-output "sgpub_ids" {
-  value = module.networking.sgpub_ids
-}
-output "sgpub_ingress" {
-  value = module.networking.sgpub_ingress
+output "sg_id" {
+  value = module.networking.sg_id
 }
 
-/*
 #--- compute
-output "server_id" {
-  value = module.compute.server_id
+output "server_ids" {
+  value = module.compute.server_ids
 }
-output "server_public_ip" {
-  value = module.compute.server_public_ip
+output "server_public_ips" {
+  value = module.compute.server_public_ips
 }
-*/

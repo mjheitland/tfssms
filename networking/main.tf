@@ -20,10 +20,10 @@ resource "aws_internet_gateway" "tfmh_igw" {
 }
 
 resource "aws_subnet" "tfmh_subpub" {
-  count                   = length(var.public_cidrs)
+  count                   = length(var.subpub_cidrs)
 
   vpc_id                  = aws_vpc.tfmh_vpc.id
-  cidr_block              = var.public_cidrs[count.index]
+  cidr_block              = var.subpub_cidrs[count.index]
   map_public_ip_on_launch = true
   availability_zone       = data.aws_availability_zones.available.names[count.index]
   tags = { 
@@ -33,9 +33,9 @@ resource "aws_subnet" "tfmh_subpub" {
 }
 
 resource "aws_subnet" "tfmh_subprv" {
-  count                   = length(var.private_cidrs)
+  count                   = length(var.subprv_cidrs)
   vpc_id                  = aws_vpc.tfmh_vpc.id
-  cidr_block              = var.private_cidrs[count.index]
+  cidr_block              = var.subprv_cidrs[count.index]
   map_public_ip_on_launch = true
   availability_zone       = data.aws_availability_zones.available.names[count.index]
   tags = { 
@@ -44,7 +44,7 @@ resource "aws_subnet" "tfmh_subprv" {
   }
 }
 
-resource "aws_security_group" "tfmh_sgpub" {
+resource "aws_security_group" "tfmh_sg" {
   name        = "tfmh_sgpub"
   description = "Used for access to the public instances"
   vpc_id      = aws_vpc.tfmh_vpc.id
