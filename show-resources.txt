@@ -1,67 +1,67 @@
-[0m
+
 # module.compute.aws_instance.tfmh_server[0]:
 resource "aws_instance" "tfmh_server" {
-    [1m[0mami[0m[0m                          = "ami-010fae13a16763bb4"
-    [1m[0marn[0m[0m                          = "arn:aws:ec2:eu-central-1:094033154904:instance/i-0806970ef87f0d313"
-    [1m[0massociate_public_ip_address[0m[0m  = true
-    [1m[0mavailability_zone[0m[0m            = "eu-central-1a"
-    [1m[0mcpu_core_count[0m[0m               = 1
-    [1m[0mcpu_threads_per_core[0m[0m         = 1
-    [1m[0mdisable_api_termination[0m[0m      = false
-    [1m[0mebs_optimized[0m[0m                = false
-    [1m[0mget_password_data[0m[0m            = false
-    [1m[0mid[0m[0m                           = "i-0806970ef87f0d313"
-    [1m[0minstance_state[0m[0m               = "running"
-    [1m[0minstance_type[0m[0m                = "t2.micro"
-    [1m[0mipv6_address_count[0m[0m           = 0
-    [1m[0mipv6_addresses[0m[0m               = []
-    [1m[0mkey_name[0m[0m                     = "tfmh_key"
-    [1m[0mmonitoring[0m[0m                   = false
-    [1m[0mprimary_network_interface_id[0m[0m = "eni-075739698f97946b9"
-    [1m[0mprivate_dns[0m[0m                  = "ip-10-50-101-17.eu-central-1.compute.internal"
-    [1m[0mprivate_ip[0m[0m                   = "10.50.101.17"
-    [1m[0mpublic_dns[0m[0m                   = "ec2-18-196-135-78.eu-central-1.compute.amazonaws.com"
-    [1m[0mpublic_ip[0m[0m                    = "18.196.135.78"
-    [1m[0msecurity_groups[0m[0m              = []
-    [1m[0msource_dest_check[0m[0m            = true
-    [1m[0msubnet_id[0m[0m                    = "subnet-035657719c79c72e3"
-    [1m[0mtags[0m[0m                         = {
+    ami                          = "ami-010fae13a16763bb4"
+    arn                          = "arn:aws:ec2:eu-central-1:094033154904:instance/i-0806970ef87f0d313"
+    associate_public_ip_address  = true
+    availability_zone            = "eu-central-1a"
+    cpu_core_count               = 1
+    cpu_threads_per_core         = 1
+    disable_api_termination      = false
+    ebs_optimized                = false
+    get_password_data            = false
+    id                           = "i-0806970ef87f0d313"
+    instance_state               = "running"
+    instance_type                = "t2.micro"
+    ipv6_address_count           = 0
+    ipv6_addresses               = []
+    key_name                     = "tfmh_key"
+    monitoring                   = false
+    primary_network_interface_id = "eni-075739698f97946b9"
+    private_dns                  = "ip-10-50-101-17.eu-central-1.compute.internal"
+    private_ip                   = "10.50.101.17"
+    public_dns                   = "ec2-18-196-135-78.eu-central-1.compute.amazonaws.com"
+    public_ip                    = "18.196.135.78"
+    security_groups              = []
+    source_dest_check            = true
+    subnet_id                    = "subnet-035657719c79c72e3"
+    tags                         = {
         "name"         = "tfmh_server_0"
         "project_name" = "tfmh"
     }
-    [1m[0mtenancy[0m[0m                      = "default"
-    [1m[0muser_data[0m[0m                    = "30cbf5da105ecf0fbf324083481d4e16f361b31b"
-    [1m[0mvolume_tags[0m[0m                  = {}
-    [1m[0mvpc_security_group_ids[0m[0m       = [
+    tenancy                      = "default"
+    user_data                    = "30cbf5da105ecf0fbf324083481d4e16f361b31b"
+    volume_tags                  = {}
+    vpc_security_group_ids       = [
         "sg-0f6096fb8e207a878",
     ]
 
     credit_specification {
-        [1m[0mcpu_credits[0m[0m = "standard"
+        cpu_credits = "standard"
     }
 
     root_block_device {
-        [1m[0mdelete_on_termination[0m[0m = true
-        [1m[0mencrypted[0m[0m             = false
-        [1m[0miops[0m[0m                  = 100
-        [1m[0mvolume_id[0m[0m             = "vol-08e0f824eba37ad31"
-        [1m[0mvolume_size[0m[0m           = 8
-        [1m[0mvolume_type[0m[0m           = "gp2"
+        delete_on_termination = true
+        encrypted             = false
+        iops                  = 100
+        volume_id             = "vol-08e0f824eba37ad31"
+        volume_size           = 8
+        volume_type           = "gp2"
     }
 }
 
 # module.compute.aws_key_pair.tfmh_keypair:
 resource "aws_key_pair" "tfmh_keypair" {
-    [1m[0mfingerprint[0m[0m = "b5:00:8a:aa:a6:c4:38:64:9c:f3:1c:d6:60:54:e9:ba"
-    [1m[0mid[0m[0m          = "tfmh_key"
-    [1m[0mkey_name[0m[0m    = "tfmh_key"
-    [1m[0mpublic_key[0m[0m  = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDvsY4SeOwr4H7eBjcs3EkvGcYoN7ZW5ss6jokzuEu5T3Zvuu1JHhbb7j+zqY6SmVz8YZbngMySva5ym3/bAuimlvMAuk1O0bcAaBvjqhOxozsRPrLHyM/8koO74GrDrSndcNGVINGapKnhcWIKgd3WAYhJGuUGAeJRdCE9XUex4ZWmp4DheQNNGQOo3ehTRtPYtsu71CVHlqehCOw75+O5x4U3/PiJSA3kx6rZp17Cm8xxLtKyp3eSp5N01Pdum9KisAXqQ1GqIDiWnpgsx56DdLgBwi+7Pa7S2lLHEEXS3stbhCYt7uk5DJGhsTryhbptShoiBYiY0c+LbqSvdM84KEEgR95iKcIYwb1mTRRQghl08xaF/ECsqAbuO7WtjK8iLnOZh9ROqMv8gAuAW2U8burpK18iyRC1W8IdYsjQpyIlsj3L1xskbVCgG2UUa6lWGGvgA77VbKAIIPN/eY77MovSFTWQ8z5j4TtPWhV9fh38EuEXP/lt6gL/HtvYgiNl7PsYfNI/AfEl07E7AWztPEQQ5lxLpEMowqtWjE4PL2aIFPlCBX6uqJ1J4tJ0+pmGtlNeWEddVxpFjkEnAh5BbOhWDlE53cjYKkWOCibv50urW57iTrQzk2EIVfvlHeUB4+vKGyzz3EAWKRYTyUtSLQG0vJ+rAgjtkFX5UPD+PQ== heitlm@amazon.de"
+    fingerprint = "b5:00:8a:aa:a6:c4:38:64:9c:f3:1c:d6:60:54:e9:ba"
+    id          = "tfmh_key"
+    key_name    = "tfmh_key"
+    public_key  = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDvsY4SeOwr4H7eBjcs3EkvGcYoN7ZW5ss6jokzuEu5T3Zvuu1JHhbb7j+zqY6SmVz8YZbngMySva5ym3/bAuimlvMAuk1O0bcAaBvjqhOxozsRPrLHyM/8koO74GrDrSndcNGVINGapKnhcWIKgd3WAYhJGuUGAeJRdCE9XUex4ZWmp4DheQNNGQOo3ehTRtPYtsu71CVHlqehCOw75+O5x4U3/PiJSA3kx6rZp17Cm8xxLtKyp3eSp5N01Pdum9KisAXqQ1GqIDiWnpgsx56DdLgBwi+7Pa7S2lLHEEXS3stbhCYt7uk5DJGhsTryhbptShoiBYiY0c+LbqSvdM84KEEgR95iKcIYwb1mTRRQghl08xaF/ECsqAbuO7WtjK8iLnOZh9ROqMv8gAuAW2U8burpK18iyRC1W8IdYsjQpyIlsj3L1xskbVCgG2UUa6lWGGvgA77VbKAIIPN/eY77MovSFTWQ8z5j4TtPWhV9fh38EuEXP/lt6gL/HtvYgiNl7PsYfNI/AfEl07E7AWztPEQQ5lxLpEMowqtWjE4PL2aIFPlCBX6uqJ1J4tJ0+pmGtlNeWEddVxpFjkEnAh5BbOhWDlE53cjYKkWOCibv50urW57iTrQzk2EIVfvlHeUB4+vKGyzz3EAWKRYTyUtSLQG0vJ+rAgjtkFX5UPD+PQ== heitlm@amazon.de"
 }
 
 # module.compute.data.aws_ami.tfmh_server_ami:
 data "aws_ami" "tfmh_server_ami" {
-    [1m[0marchitecture[0m[0m          = "x86_64"
-    [1m[0mblock_device_mappings[0m[0m = [
+    architecture          = "x86_64"
+    block_device_mappings = [
         {
             device_name  = "/dev/xvda"
             ebs          = {
@@ -76,37 +76,37 @@ data "aws_ami" "tfmh_server_ami" {
             virtual_name = ""
         },
     ]
-    [1m[0mcreation_date[0m[0m         = "2019-08-26T20:12:17.000Z"
-    [1m[0mdescription[0m[0m           = "Amazon Linux AMI 2018.03.0.20190826 x86_64 HVM gp2"
-    [1m[0mhypervisor[0m[0m            = "xen"
-    [1m[0mid[0m[0m                    = "ami-010fae13a16763bb4"
-    [1m[0mimage_id[0m[0m              = "ami-010fae13a16763bb4"
-    [1m[0mimage_location[0m[0m        = "amazon/amzn-ami-hvm-2018.03.0.20190826-x86_64-gp2"
-    [1m[0mimage_owner_alias[0m[0m     = "amazon"
-    [1m[0mimage_type[0m[0m            = "machine"
-    [1m[0mmost_recent[0m[0m           = true
-    [1m[0mname[0m[0m                  = "amzn-ami-hvm-2018.03.0.20190826-x86_64-gp2"
-    [1m[0mowner_id[0m[0m              = "137112412989"
-    [1m[0mowners[0m[0m                = [
+    creation_date         = "2019-08-26T20:12:17.000Z"
+    description           = "Amazon Linux AMI 2018.03.0.20190826 x86_64 HVM gp2"
+    hypervisor            = "xen"
+    id                    = "ami-010fae13a16763bb4"
+    image_id              = "ami-010fae13a16763bb4"
+    image_location        = "amazon/amzn-ami-hvm-2018.03.0.20190826-x86_64-gp2"
+    image_owner_alias     = "amazon"
+    image_type            = "machine"
+    most_recent           = true
+    name                  = "amzn-ami-hvm-2018.03.0.20190826-x86_64-gp2"
+    owner_id              = "137112412989"
+    owners                = [
         "amazon",
     ]
-    [1m[0mproduct_codes[0m[0m         = []
-    [1m[0mpublic[0m[0m                = true
-    [1m[0mroot_device_name[0m[0m      = "/dev/xvda"
-    [1m[0mroot_device_type[0m[0m      = "ebs"
-    [1m[0mroot_snapshot_id[0m[0m      = "snap-09f8ecea772ac514e"
-    [1m[0msriov_net_support[0m[0m     = "simple"
-    [1m[0mstate[0m[0m                 = "available"
-    [1m[0mstate_reason[0m[0m          = {
+    product_codes         = []
+    public                = true
+    root_device_name      = "/dev/xvda"
+    root_device_type      = "ebs"
+    root_snapshot_id      = "snap-09f8ecea772ac514e"
+    sriov_net_support     = "simple"
+    state                 = "available"
+    state_reason          = {
         "code"    = "UNSET"
         "message" = "UNSET"
     }
-    [1m[0mtags[0m[0m                  = {}
-    [1m[0mvirtualization_type[0m[0m   = "hvm"
+    tags                  = {}
+    virtualization_type   = "hvm"
 
     filter {
-        [1m[0mname[0m[0m   = "name"
-        [1m[0mvalues[0m[0m = [
+        name   = "name"
+        values = [
             "amzn-ami-hvm*-x86_64-gp2",
         ]
     }
@@ -114,10 +114,10 @@ data "aws_ami" "tfmh_server_ami" {
 
 # module.compute.data.template_file.tfmh_userdata:
 data "template_file" "tfmh_userdata" {
-    [1m[0mid[0m[0m       = "15bde874ad8736ca58562793da156f0230c12fc9c24a35782500ab45fcddd1bf"
-    [1m[0mrendered[0m[0m = "#!/bin/bash\nyum install httpd -y\necho \"Subnet for Firewall: element(var.subpub_cidrs, count.index)\" >> /var/www/html/index.html\nservice httpd start\nchkconfig httpd on\n"
-    [1m[0mtemplate[0m[0m = "#!/bin/bash\nyum install httpd -y\necho \"Subnet for Firewall: ${firewall_subnets}\" >> /var/www/html/index.html\nservice httpd start\nchkconfig httpd on\n"
-    [1m[0mvars[0m[0m     = {
+    id       = "15bde874ad8736ca58562793da156f0230c12fc9c24a35782500ab45fcddd1bf"
+    rendered = "#!/bin/bash\nyum install httpd -y\necho \"Subnet for Firewall: element(var.subpub_cidrs, count.index)\" >> /var/www/html/index.html\nservice httpd start\nchkconfig httpd on\n"
+    template = "#!/bin/bash\nyum install httpd -y\necho \"Subnet for Firewall: ${firewall_subnets}\" >> /var/www/html/index.html\nservice httpd start\nchkconfig httpd on\n"
+    vars     = {
         "firewall_subnets" = "element(var.subpub_cidrs, count.index)"
     }
 }
@@ -125,34 +125,34 @@ data "template_file" "tfmh_userdata" {
 
 # module.networking.aws_default_route_table.tfmh_rtprv:
 resource "aws_default_route_table" "tfmh_rtprv" {
-    [1m[0mdefault_route_table_id[0m[0m = "rtb-04c2617a9a1b15f2c"
-    [1m[0mid[0m[0m                     = "rtb-04c2617a9a1b15f2c"
-    [1m[0mowner_id[0m[0m               = "094033154904"
-    [1m[0mroute[0m[0m                  = []
-    [1m[0mtags[0m[0m                   = {
+    default_route_table_id = "rtb-04c2617a9a1b15f2c"
+    id                     = "rtb-04c2617a9a1b15f2c"
+    owner_id               = "094033154904"
+    route                  = []
+    tags                   = {
         "name"         = "tfmh_tfmh_rtprv"
         "project_name" = "tfmh"
     }
-    [1m[0mvpc_id[0m[0m                 = "vpc-03422079e444d3361"
+    vpc_id                 = "vpc-03422079e444d3361"
 }
 
 # module.networking.aws_internet_gateway.tfmh_igw:
 resource "aws_internet_gateway" "tfmh_igw" {
-    [1m[0mid[0m[0m       = "igw-096bc2014ffb66791"
-    [1m[0mowner_id[0m[0m = "094033154904"
-    [1m[0mtags[0m[0m     = {
+    id       = "igw-096bc2014ffb66791"
+    owner_id = "094033154904"
+    tags     = {
         "name"         = "tfmh_igw"
         "project_name" = "tfmh"
     }
-    [1m[0mvpc_id[0m[0m   = "vpc-03422079e444d3361"
+    vpc_id   = "vpc-03422079e444d3361"
 }
 
 # module.networking.aws_route_table.tfmh_rtpub:
 resource "aws_route_table" "tfmh_rtpub" {
-    [1m[0mid[0m[0m               = "rtb-0182adb0e66008580"
-    [1m[0mowner_id[0m[0m         = "094033154904"
-    [1m[0mpropagating_vgws[0m[0m = []
-    [1m[0mroute[0m[0m            = [
+    id               = "rtb-0182adb0e66008580"
+    owner_id         = "094033154904"
+    propagating_vgws = []
+    route            = [
         {
             cidr_block                = "0.0.0.0/0"
             egress_only_gateway_id    = ""
@@ -165,25 +165,25 @@ resource "aws_route_table" "tfmh_rtpub" {
             vpc_peering_connection_id = ""
         },
     ]
-    [1m[0mtags[0m[0m             = {
+    tags             = {
         "name"         = "tfmh_tfmh_rtpub"
         "project_name" = "tfmh"
     }
-    [1m[0mvpc_id[0m[0m           = "vpc-03422079e444d3361"
+    vpc_id           = "vpc-03422079e444d3361"
 }
 
 # module.networking.aws_route_table_association.tfmh_rtpubassoc[0]:
 resource "aws_route_table_association" "tfmh_rtpubassoc" {
-    [1m[0mid[0m[0m             = "rtbassoc-09991799c82fbb7d3"
-    [1m[0mroute_table_id[0m[0m = "rtb-0182adb0e66008580"
-    [1m[0msubnet_id[0m[0m      = "subnet-035657719c79c72e3"
+    id             = "rtbassoc-09991799c82fbb7d3"
+    route_table_id = "rtb-0182adb0e66008580"
+    subnet_id      = "subnet-035657719c79c72e3"
 }
 
 # module.networking.aws_security_group.tfmh_sg:
 resource "aws_security_group" "tfmh_sg" {
-    [1m[0marn[0m[0m                    = "arn:aws:ec2:eu-central-1:094033154904:security-group/sg-0f6096fb8e207a878"
-    [1m[0mdescription[0m[0m            = "Used for access to the public instances"
-    [1m[0megress[0m[0m                 = [
+    arn                    = "arn:aws:ec2:eu-central-1:094033154904:security-group/sg-0f6096fb8e207a878"
+    description            = "Used for access to the public instances"
+    egress                 = [
         {
             cidr_blocks      = [
                 "0.0.0.0/0",
@@ -198,8 +198,8 @@ resource "aws_security_group" "tfmh_sg" {
             to_port          = 0
         },
     ]
-    [1m[0mid[0m[0m                     = "sg-0f6096fb8e207a878"
-    [1m[0mingress[0m[0m                = [
+    id                     = "sg-0f6096fb8e207a878"
+    ingress                = [
         {
             cidr_blocks      = [
                 "0.0.0.0/0",
@@ -240,83 +240,83 @@ resource "aws_security_group" "tfmh_sg" {
             to_port          = 27017
         },
     ]
-    [1m[0mname[0m[0m                   = "tfmh_sgpub"
-    [1m[0mowner_id[0m[0m               = "094033154904"
-    [1m[0mrevoke_rules_on_delete[0m[0m = false
-    [1m[0mtags[0m[0m                   = {
+    name                   = "tfmh_sgpub"
+    owner_id               = "094033154904"
+    revoke_rules_on_delete = false
+    tags                   = {
         "name"         = "tfmh_sgpub"
         "project_name" = "tfmh"
     }
-    [1m[0mvpc_id[0m[0m                 = "vpc-03422079e444d3361"
+    vpc_id                 = "vpc-03422079e444d3361"
 }
 
 # module.networking.aws_subnet.tfmh_subprv[1]:
 resource "aws_subnet" "tfmh_subprv" {
-    [1m[0marn[0m[0m                             = "arn:aws:ec2:eu-central-1:094033154904:subnet/subnet-0adf6f74a68d4c98e"
-    [1m[0massign_ipv6_address_on_creation[0m[0m = false
-    [1m[0mavailability_zone[0m[0m               = "eu-central-1b"
-    [1m[0mavailability_zone_id[0m[0m            = "euc1-az3"
-    [1m[0mcidr_block[0m[0m                      = "10.50.202.0/24"
-    [1m[0mid[0m[0m                              = "subnet-0adf6f74a68d4c98e"
-    [1m[0mmap_public_ip_on_launch[0m[0m         = true
-    [1m[0mowner_id[0m[0m                        = "094033154904"
-    [1m[0mtags[0m[0m                            = {
+    arn                             = "arn:aws:ec2:eu-central-1:094033154904:subnet/subnet-0adf6f74a68d4c98e"
+    assign_ipv6_address_on_creation = false
+    availability_zone               = "eu-central-1b"
+    availability_zone_id            = "euc1-az3"
+    cidr_block                      = "10.50.202.0/24"
+    id                              = "subnet-0adf6f74a68d4c98e"
+    map_public_ip_on_launch         = true
+    owner_id                        = "094033154904"
+    tags                            = {
         "name"         = "tfmh_subprv_2"
         "project_name" = "tfmh"
     }
-    [1m[0mvpc_id[0m[0m                          = "vpc-03422079e444d3361"
+    vpc_id                          = "vpc-03422079e444d3361"
 }
 
 # module.networking.aws_subnet.tfmh_subprv[0]:
 resource "aws_subnet" "tfmh_subprv" {
-    [1m[0marn[0m[0m                             = "arn:aws:ec2:eu-central-1:094033154904:subnet/subnet-04e0e45e81628f01a"
-    [1m[0massign_ipv6_address_on_creation[0m[0m = false
-    [1m[0mavailability_zone[0m[0m               = "eu-central-1a"
-    [1m[0mavailability_zone_id[0m[0m            = "euc1-az2"
-    [1m[0mcidr_block[0m[0m                      = "10.50.201.0/24"
-    [1m[0mid[0m[0m                              = "subnet-04e0e45e81628f01a"
-    [1m[0mmap_public_ip_on_launch[0m[0m         = true
-    [1m[0mowner_id[0m[0m                        = "094033154904"
-    [1m[0mtags[0m[0m                            = {
+    arn                             = "arn:aws:ec2:eu-central-1:094033154904:subnet/subnet-04e0e45e81628f01a"
+    assign_ipv6_address_on_creation = false
+    availability_zone               = "eu-central-1a"
+    availability_zone_id            = "euc1-az2"
+    cidr_block                      = "10.50.201.0/24"
+    id                              = "subnet-04e0e45e81628f01a"
+    map_public_ip_on_launch         = true
+    owner_id                        = "094033154904"
+    tags                            = {
         "name"         = "tfmh_subprv_1"
         "project_name" = "tfmh"
     }
-    [1m[0mvpc_id[0m[0m                          = "vpc-03422079e444d3361"
+    vpc_id                          = "vpc-03422079e444d3361"
 }
 
 # module.networking.aws_subnet.tfmh_subpub[0]:
 resource "aws_subnet" "tfmh_subpub" {
-    [1m[0marn[0m[0m                             = "arn:aws:ec2:eu-central-1:094033154904:subnet/subnet-035657719c79c72e3"
-    [1m[0massign_ipv6_address_on_creation[0m[0m = false
-    [1m[0mavailability_zone[0m[0m               = "eu-central-1a"
-    [1m[0mavailability_zone_id[0m[0m            = "euc1-az2"
-    [1m[0mcidr_block[0m[0m                      = "10.50.101.0/24"
-    [1m[0mid[0m[0m                              = "subnet-035657719c79c72e3"
-    [1m[0mmap_public_ip_on_launch[0m[0m         = true
-    [1m[0mowner_id[0m[0m                        = "094033154904"
-    [1m[0mtags[0m[0m                            = {
+    arn                             = "arn:aws:ec2:eu-central-1:094033154904:subnet/subnet-035657719c79c72e3"
+    assign_ipv6_address_on_creation = false
+    availability_zone               = "eu-central-1a"
+    availability_zone_id            = "euc1-az2"
+    cidr_block                      = "10.50.101.0/24"
+    id                              = "subnet-035657719c79c72e3"
+    map_public_ip_on_launch         = true
+    owner_id                        = "094033154904"
+    tags                            = {
         "name"         = "tfmh_subpub_1"
         "project_name" = "tfmh"
     }
-    [1m[0mvpc_id[0m[0m                          = "vpc-03422079e444d3361"
+    vpc_id                          = "vpc-03422079e444d3361"
 }
 
 # module.networking.aws_vpc.tfmh_vpc:
 resource "aws_vpc" "tfmh_vpc" {
-    [1m[0marn[0m[0m                              = "arn:aws:ec2:eu-central-1:094033154904:vpc/vpc-03422079e444d3361"
-    [1m[0massign_generated_ipv6_cidr_block[0m[0m = false
-    [1m[0mcidr_block[0m[0m                       = "10.50.0.0/16"
-    [1m[0mdefault_network_acl_id[0m[0m           = "acl-0c347b3111632d8e1"
-    [1m[0mdefault_route_table_id[0m[0m           = "rtb-04c2617a9a1b15f2c"
-    [1m[0mdefault_security_group_id[0m[0m        = "sg-0282051e06937ee4f"
-    [1m[0mdhcp_options_id[0m[0m                  = "dopt-ff739395"
-    [1m[0menable_dns_hostnames[0m[0m             = true
-    [1m[0menable_dns_support[0m[0m               = true
-    [1m[0mid[0m[0m                               = "vpc-03422079e444d3361"
-    [1m[0minstance_tenancy[0m[0m                 = "default"
-    [1m[0mmain_route_table_id[0m[0m              = "rtb-04c2617a9a1b15f2c"
-    [1m[0mowner_id[0m[0m                         = "094033154904"
-    [1m[0mtags[0m[0m                             = {
+    arn                              = "arn:aws:ec2:eu-central-1:094033154904:vpc/vpc-03422079e444d3361"
+    assign_generated_ipv6_cidr_block = false
+    cidr_block                       = "10.50.0.0/16"
+    default_network_acl_id           = "acl-0c347b3111632d8e1"
+    default_route_table_id           = "rtb-04c2617a9a1b15f2c"
+    default_security_group_id        = "sg-0282051e06937ee4f"
+    dhcp_options_id                  = "dopt-ff739395"
+    enable_dns_hostnames             = true
+    enable_dns_support               = true
+    id                               = "vpc-03422079e444d3361"
+    instance_tenancy                 = "default"
+    main_route_table_id              = "rtb-04c2617a9a1b15f2c"
+    owner_id                         = "094033154904"
+    tags                             = {
         "name"         = "tfmh_vpc"
         "project_name" = "tfmh"
     }
@@ -324,13 +324,13 @@ resource "aws_vpc" "tfmh_vpc" {
 
 # module.networking.data.aws_availability_zones.available:
 data "aws_availability_zones" "available" {
-    [1m[0mid[0m[0m       = "2019-10-08 09:46:41.119149 +0000 UTC"
-    [1m[0mnames[0m[0m    = [
+    id       = "2019-10-08 09:46:41.119149 +0000 UTC"
+    names    = [
         "eu-central-1a",
         "eu-central-1b",
         "eu-central-1c",
     ]
-    [1m[0mzone_ids[0m[0m = [
+    zone_ids = [
         "euc1-az2",
         "euc1-az3",
         "euc1-az1",
@@ -359,4 +359,4 @@ subprv_ids = [
 subpub_ids = [
     "subnet-035657719c79c72e3",
 ]
-vpc_id = "vpc-03422079e444d3361"[0m[0m
+vpc_id = "vpc-03422079e444d3361"
