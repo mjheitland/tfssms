@@ -1,0 +1,362 @@
+[0m
+# module.compute.aws_instance.tfmh_server[0]:
+resource "aws_instance" "tfmh_server" {
+    [1m[0mami[0m[0m                          = "ami-010fae13a16763bb4"
+    [1m[0marn[0m[0m                          = "arn:aws:ec2:eu-central-1:094033154904:instance/i-0806970ef87f0d313"
+    [1m[0massociate_public_ip_address[0m[0m  = true
+    [1m[0mavailability_zone[0m[0m            = "eu-central-1a"
+    [1m[0mcpu_core_count[0m[0m               = 1
+    [1m[0mcpu_threads_per_core[0m[0m         = 1
+    [1m[0mdisable_api_termination[0m[0m      = false
+    [1m[0mebs_optimized[0m[0m                = false
+    [1m[0mget_password_data[0m[0m            = false
+    [1m[0mid[0m[0m                           = "i-0806970ef87f0d313"
+    [1m[0minstance_state[0m[0m               = "running"
+    [1m[0minstance_type[0m[0m                = "t2.micro"
+    [1m[0mipv6_address_count[0m[0m           = 0
+    [1m[0mipv6_addresses[0m[0m               = []
+    [1m[0mkey_name[0m[0m                     = "tfmh_key"
+    [1m[0mmonitoring[0m[0m                   = false
+    [1m[0mprimary_network_interface_id[0m[0m = "eni-075739698f97946b9"
+    [1m[0mprivate_dns[0m[0m                  = "ip-10-50-101-17.eu-central-1.compute.internal"
+    [1m[0mprivate_ip[0m[0m                   = "10.50.101.17"
+    [1m[0mpublic_dns[0m[0m                   = "ec2-18-196-135-78.eu-central-1.compute.amazonaws.com"
+    [1m[0mpublic_ip[0m[0m                    = "18.196.135.78"
+    [1m[0msecurity_groups[0m[0m              = []
+    [1m[0msource_dest_check[0m[0m            = true
+    [1m[0msubnet_id[0m[0m                    = "subnet-035657719c79c72e3"
+    [1m[0mtags[0m[0m                         = {
+        "name"         = "tfmh_server_0"
+        "project_name" = "tfmh"
+    }
+    [1m[0mtenancy[0m[0m                      = "default"
+    [1m[0muser_data[0m[0m                    = "30cbf5da105ecf0fbf324083481d4e16f361b31b"
+    [1m[0mvolume_tags[0m[0m                  = {}
+    [1m[0mvpc_security_group_ids[0m[0m       = [
+        "sg-0f6096fb8e207a878",
+    ]
+
+    credit_specification {
+        [1m[0mcpu_credits[0m[0m = "standard"
+    }
+
+    root_block_device {
+        [1m[0mdelete_on_termination[0m[0m = true
+        [1m[0mencrypted[0m[0m             = false
+        [1m[0miops[0m[0m                  = 100
+        [1m[0mvolume_id[0m[0m             = "vol-08e0f824eba37ad31"
+        [1m[0mvolume_size[0m[0m           = 8
+        [1m[0mvolume_type[0m[0m           = "gp2"
+    }
+}
+
+# module.compute.aws_key_pair.tfmh_keypair:
+resource "aws_key_pair" "tfmh_keypair" {
+    [1m[0mfingerprint[0m[0m = "b5:00:8a:aa:a6:c4:38:64:9c:f3:1c:d6:60:54:e9:ba"
+    [1m[0mid[0m[0m          = "tfmh_key"
+    [1m[0mkey_name[0m[0m    = "tfmh_key"
+    [1m[0mpublic_key[0m[0m  = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDvsY4SeOwr4H7eBjcs3EkvGcYoN7ZW5ss6jokzuEu5T3Zvuu1JHhbb7j+zqY6SmVz8YZbngMySva5ym3/bAuimlvMAuk1O0bcAaBvjqhOxozsRPrLHyM/8koO74GrDrSndcNGVINGapKnhcWIKgd3WAYhJGuUGAeJRdCE9XUex4ZWmp4DheQNNGQOo3ehTRtPYtsu71CVHlqehCOw75+O5x4U3/PiJSA3kx6rZp17Cm8xxLtKyp3eSp5N01Pdum9KisAXqQ1GqIDiWnpgsx56DdLgBwi+7Pa7S2lLHEEXS3stbhCYt7uk5DJGhsTryhbptShoiBYiY0c+LbqSvdM84KEEgR95iKcIYwb1mTRRQghl08xaF/ECsqAbuO7WtjK8iLnOZh9ROqMv8gAuAW2U8burpK18iyRC1W8IdYsjQpyIlsj3L1xskbVCgG2UUa6lWGGvgA77VbKAIIPN/eY77MovSFTWQ8z5j4TtPWhV9fh38EuEXP/lt6gL/HtvYgiNl7PsYfNI/AfEl07E7AWztPEQQ5lxLpEMowqtWjE4PL2aIFPlCBX6uqJ1J4tJ0+pmGtlNeWEddVxpFjkEnAh5BbOhWDlE53cjYKkWOCibv50urW57iTrQzk2EIVfvlHeUB4+vKGyzz3EAWKRYTyUtSLQG0vJ+rAgjtkFX5UPD+PQ== heitlm@amazon.de"
+}
+
+# module.compute.data.aws_ami.tfmh_server_ami:
+data "aws_ami" "tfmh_server_ami" {
+    [1m[0marchitecture[0m[0m          = "x86_64"
+    [1m[0mblock_device_mappings[0m[0m = [
+        {
+            device_name  = "/dev/xvda"
+            ebs          = {
+                "delete_on_termination" = "true"
+                "encrypted"             = "false"
+                "iops"                  = "0"
+                "snapshot_id"           = "snap-09f8ecea772ac514e"
+                "volume_size"           = "8"
+                "volume_type"           = "gp2"
+            }
+            no_device    = ""
+            virtual_name = ""
+        },
+    ]
+    [1m[0mcreation_date[0m[0m         = "2019-08-26T20:12:17.000Z"
+    [1m[0mdescription[0m[0m           = "Amazon Linux AMI 2018.03.0.20190826 x86_64 HVM gp2"
+    [1m[0mhypervisor[0m[0m            = "xen"
+    [1m[0mid[0m[0m                    = "ami-010fae13a16763bb4"
+    [1m[0mimage_id[0m[0m              = "ami-010fae13a16763bb4"
+    [1m[0mimage_location[0m[0m        = "amazon/amzn-ami-hvm-2018.03.0.20190826-x86_64-gp2"
+    [1m[0mimage_owner_alias[0m[0m     = "amazon"
+    [1m[0mimage_type[0m[0m            = "machine"
+    [1m[0mmost_recent[0m[0m           = true
+    [1m[0mname[0m[0m                  = "amzn-ami-hvm-2018.03.0.20190826-x86_64-gp2"
+    [1m[0mowner_id[0m[0m              = "137112412989"
+    [1m[0mowners[0m[0m                = [
+        "amazon",
+    ]
+    [1m[0mproduct_codes[0m[0m         = []
+    [1m[0mpublic[0m[0m                = true
+    [1m[0mroot_device_name[0m[0m      = "/dev/xvda"
+    [1m[0mroot_device_type[0m[0m      = "ebs"
+    [1m[0mroot_snapshot_id[0m[0m      = "snap-09f8ecea772ac514e"
+    [1m[0msriov_net_support[0m[0m     = "simple"
+    [1m[0mstate[0m[0m                 = "available"
+    [1m[0mstate_reason[0m[0m          = {
+        "code"    = "UNSET"
+        "message" = "UNSET"
+    }
+    [1m[0mtags[0m[0m                  = {}
+    [1m[0mvirtualization_type[0m[0m   = "hvm"
+
+    filter {
+        [1m[0mname[0m[0m   = "name"
+        [1m[0mvalues[0m[0m = [
+            "amzn-ami-hvm*-x86_64-gp2",
+        ]
+    }
+}
+
+# module.compute.data.template_file.tfmh_userdata:
+data "template_file" "tfmh_userdata" {
+    [1m[0mid[0m[0m       = "15bde874ad8736ca58562793da156f0230c12fc9c24a35782500ab45fcddd1bf"
+    [1m[0mrendered[0m[0m = "#!/bin/bash\nyum install httpd -y\necho \"Subnet for Firewall: element(var.subpub_cidrs, count.index)\" >> /var/www/html/index.html\nservice httpd start\nchkconfig httpd on\n"
+    [1m[0mtemplate[0m[0m = "#!/bin/bash\nyum install httpd -y\necho \"Subnet for Firewall: ${firewall_subnets}\" >> /var/www/html/index.html\nservice httpd start\nchkconfig httpd on\n"
+    [1m[0mvars[0m[0m     = {
+        "firewall_subnets" = "element(var.subpub_cidrs, count.index)"
+    }
+}
+
+
+# module.networking.aws_default_route_table.tfmh_rtprv:
+resource "aws_default_route_table" "tfmh_rtprv" {
+    [1m[0mdefault_route_table_id[0m[0m = "rtb-04c2617a9a1b15f2c"
+    [1m[0mid[0m[0m                     = "rtb-04c2617a9a1b15f2c"
+    [1m[0mowner_id[0m[0m               = "094033154904"
+    [1m[0mroute[0m[0m                  = []
+    [1m[0mtags[0m[0m                   = {
+        "name"         = "tfmh_tfmh_rtprv"
+        "project_name" = "tfmh"
+    }
+    [1m[0mvpc_id[0m[0m                 = "vpc-03422079e444d3361"
+}
+
+# module.networking.aws_internet_gateway.tfmh_igw:
+resource "aws_internet_gateway" "tfmh_igw" {
+    [1m[0mid[0m[0m       = "igw-096bc2014ffb66791"
+    [1m[0mowner_id[0m[0m = "094033154904"
+    [1m[0mtags[0m[0m     = {
+        "name"         = "tfmh_igw"
+        "project_name" = "tfmh"
+    }
+    [1m[0mvpc_id[0m[0m   = "vpc-03422079e444d3361"
+}
+
+# module.networking.aws_route_table.tfmh_rtpub:
+resource "aws_route_table" "tfmh_rtpub" {
+    [1m[0mid[0m[0m               = "rtb-0182adb0e66008580"
+    [1m[0mowner_id[0m[0m         = "094033154904"
+    [1m[0mpropagating_vgws[0m[0m = []
+    [1m[0mroute[0m[0m            = [
+        {
+            cidr_block                = "0.0.0.0/0"
+            egress_only_gateway_id    = ""
+            gateway_id                = "igw-096bc2014ffb66791"
+            instance_id               = ""
+            ipv6_cidr_block           = ""
+            nat_gateway_id            = ""
+            network_interface_id      = ""
+            transit_gateway_id        = ""
+            vpc_peering_connection_id = ""
+        },
+    ]
+    [1m[0mtags[0m[0m             = {
+        "name"         = "tfmh_tfmh_rtpub"
+        "project_name" = "tfmh"
+    }
+    [1m[0mvpc_id[0m[0m           = "vpc-03422079e444d3361"
+}
+
+# module.networking.aws_route_table_association.tfmh_rtpubassoc[0]:
+resource "aws_route_table_association" "tfmh_rtpubassoc" {
+    [1m[0mid[0m[0m             = "rtbassoc-09991799c82fbb7d3"
+    [1m[0mroute_table_id[0m[0m = "rtb-0182adb0e66008580"
+    [1m[0msubnet_id[0m[0m      = "subnet-035657719c79c72e3"
+}
+
+# module.networking.aws_security_group.tfmh_sg:
+resource "aws_security_group" "tfmh_sg" {
+    [1m[0marn[0m[0m                    = "arn:aws:ec2:eu-central-1:094033154904:security-group/sg-0f6096fb8e207a878"
+    [1m[0mdescription[0m[0m            = "Used for access to the public instances"
+    [1m[0megress[0m[0m                 = [
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = ""
+            from_port        = 0
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "-1"
+            security_groups  = []
+            self             = false
+            to_port          = 0
+        },
+    ]
+    [1m[0mid[0m[0m                     = "sg-0f6096fb8e207a878"
+    [1m[0mingress[0m[0m                = [
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = ""
+            from_port        = 22
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "tcp"
+            security_groups  = []
+            self             = false
+            to_port          = 22
+        },
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = ""
+            from_port        = 80
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "tcp"
+            security_groups  = []
+            self             = false
+            to_port          = 80
+        },
+        {
+            cidr_blocks      = [
+                "0.1.2.3/32",
+            ]
+            description      = ""
+            from_port        = 27017
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "tcp"
+            security_groups  = []
+            self             = false
+            to_port          = 27017
+        },
+    ]
+    [1m[0mname[0m[0m                   = "tfmh_sgpub"
+    [1m[0mowner_id[0m[0m               = "094033154904"
+    [1m[0mrevoke_rules_on_delete[0m[0m = false
+    [1m[0mtags[0m[0m                   = {
+        "name"         = "tfmh_sgpub"
+        "project_name" = "tfmh"
+    }
+    [1m[0mvpc_id[0m[0m                 = "vpc-03422079e444d3361"
+}
+
+# module.networking.aws_subnet.tfmh_subprv[1]:
+resource "aws_subnet" "tfmh_subprv" {
+    [1m[0marn[0m[0m                             = "arn:aws:ec2:eu-central-1:094033154904:subnet/subnet-0adf6f74a68d4c98e"
+    [1m[0massign_ipv6_address_on_creation[0m[0m = false
+    [1m[0mavailability_zone[0m[0m               = "eu-central-1b"
+    [1m[0mavailability_zone_id[0m[0m            = "euc1-az3"
+    [1m[0mcidr_block[0m[0m                      = "10.50.202.0/24"
+    [1m[0mid[0m[0m                              = "subnet-0adf6f74a68d4c98e"
+    [1m[0mmap_public_ip_on_launch[0m[0m         = true
+    [1m[0mowner_id[0m[0m                        = "094033154904"
+    [1m[0mtags[0m[0m                            = {
+        "name"         = "tfmh_subprv_2"
+        "project_name" = "tfmh"
+    }
+    [1m[0mvpc_id[0m[0m                          = "vpc-03422079e444d3361"
+}
+
+# module.networking.aws_subnet.tfmh_subprv[0]:
+resource "aws_subnet" "tfmh_subprv" {
+    [1m[0marn[0m[0m                             = "arn:aws:ec2:eu-central-1:094033154904:subnet/subnet-04e0e45e81628f01a"
+    [1m[0massign_ipv6_address_on_creation[0m[0m = false
+    [1m[0mavailability_zone[0m[0m               = "eu-central-1a"
+    [1m[0mavailability_zone_id[0m[0m            = "euc1-az2"
+    [1m[0mcidr_block[0m[0m                      = "10.50.201.0/24"
+    [1m[0mid[0m[0m                              = "subnet-04e0e45e81628f01a"
+    [1m[0mmap_public_ip_on_launch[0m[0m         = true
+    [1m[0mowner_id[0m[0m                        = "094033154904"
+    [1m[0mtags[0m[0m                            = {
+        "name"         = "tfmh_subprv_1"
+        "project_name" = "tfmh"
+    }
+    [1m[0mvpc_id[0m[0m                          = "vpc-03422079e444d3361"
+}
+
+# module.networking.aws_subnet.tfmh_subpub[0]:
+resource "aws_subnet" "tfmh_subpub" {
+    [1m[0marn[0m[0m                             = "arn:aws:ec2:eu-central-1:094033154904:subnet/subnet-035657719c79c72e3"
+    [1m[0massign_ipv6_address_on_creation[0m[0m = false
+    [1m[0mavailability_zone[0m[0m               = "eu-central-1a"
+    [1m[0mavailability_zone_id[0m[0m            = "euc1-az2"
+    [1m[0mcidr_block[0m[0m                      = "10.50.101.0/24"
+    [1m[0mid[0m[0m                              = "subnet-035657719c79c72e3"
+    [1m[0mmap_public_ip_on_launch[0m[0m         = true
+    [1m[0mowner_id[0m[0m                        = "094033154904"
+    [1m[0mtags[0m[0m                            = {
+        "name"         = "tfmh_subpub_1"
+        "project_name" = "tfmh"
+    }
+    [1m[0mvpc_id[0m[0m                          = "vpc-03422079e444d3361"
+}
+
+# module.networking.aws_vpc.tfmh_vpc:
+resource "aws_vpc" "tfmh_vpc" {
+    [1m[0marn[0m[0m                              = "arn:aws:ec2:eu-central-1:094033154904:vpc/vpc-03422079e444d3361"
+    [1m[0massign_generated_ipv6_cidr_block[0m[0m = false
+    [1m[0mcidr_block[0m[0m                       = "10.50.0.0/16"
+    [1m[0mdefault_network_acl_id[0m[0m           = "acl-0c347b3111632d8e1"
+    [1m[0mdefault_route_table_id[0m[0m           = "rtb-04c2617a9a1b15f2c"
+    [1m[0mdefault_security_group_id[0m[0m        = "sg-0282051e06937ee4f"
+    [1m[0mdhcp_options_id[0m[0m                  = "dopt-ff739395"
+    [1m[0menable_dns_hostnames[0m[0m             = true
+    [1m[0menable_dns_support[0m[0m               = true
+    [1m[0mid[0m[0m                               = "vpc-03422079e444d3361"
+    [1m[0minstance_tenancy[0m[0m                 = "default"
+    [1m[0mmain_route_table_id[0m[0m              = "rtb-04c2617a9a1b15f2c"
+    [1m[0mowner_id[0m[0m                         = "094033154904"
+    [1m[0mtags[0m[0m                             = {
+        "name"         = "tfmh_vpc"
+        "project_name" = "tfmh"
+    }
+}
+
+# module.networking.data.aws_availability_zones.available:
+data "aws_availability_zones" "available" {
+    [1m[0mid[0m[0m       = "2019-10-08 09:46:41.119149 +0000 UTC"
+    [1m[0mnames[0m[0m    = [
+        "eu-central-1a",
+        "eu-central-1b",
+        "eu-central-1c",
+    ]
+    [1m[0mzone_ids[0m[0m = [
+        "euc1-az2",
+        "euc1-az3",
+        "euc1-az1",
+    ]
+}
+
+
+Outputs:
+
+igw_id = "igw-096bc2014ffb66791"
+keypair_id = "tfmh_key"
+project_name = "tfmh"
+rtprv_ids = [
+    "rtb-04c2617a9a1b15f2c",
+]
+rtpub_ids = [
+    "rtb-0182adb0e66008580",
+]
+server_ids = "i-0806970ef87f0d313"
+server_public_ips = "18.196.135.78"
+sg_id = "sg-0f6096fb8e207a878"
+subprv_ids = [
+    "subnet-04e0e45e81628f01a",
+    "subnet-0adf6f74a68d4c98e",
+]
+subpub_ids = [
+    "subnet-035657719c79c72e3",
+]
+vpc_id = "vpc-03422079e444d3361"[0m[0m
