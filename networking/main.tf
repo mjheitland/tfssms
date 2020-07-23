@@ -79,10 +79,10 @@ resource "aws_security_group" "tfmh_sg" {
 # Public route table, allows all outgoing traffic to go the the internet gateway.
 # https://www.terraform.io/docs/providers/aws/r/route_table.html?source=post_page-----1a7fb9a336e9----------------------
 resource "aws_route_table" "tfmh_rtpub" {
-  vpc_id = "${aws_vpc.tfmh_vpc.id}"
+  vpc_id = aws_vpc.tfmh_vpc.id
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = "${aws_internet_gateway.tfmh_igw.id}"
+    gateway_id = aws_internet_gateway.tfmh_igw.id
   }
   tags = {
     Name = format("%s_tfmh_rtpub", var.project_name)
@@ -93,8 +93,8 @@ resource "aws_route_table" "tfmh_rtpub" {
 resource "aws_route_table_association" "tfmh_rtpubassoc" {
   count = length(var.subpub_cidrs)
 
-  subnet_id      = "${aws_subnet.tfmh_subpub.*.id[count.index]}"
-  route_table_id = "${aws_route_table.tfmh_rtpub.id}"
+  subnet_id      = aws_subnet.tfmh_subpub.*.id[count.index]
+  route_table_id = aws_route_table.tfmh_rtpub.id
 }
 
 # If the subnet is not associated with any route by default it will be 
@@ -106,7 +106,7 @@ resource "aws_route_table_association" "tfmh_rtpubassoc" {
 # Default Route Table.
 # https://www.terraform.io/docs/providers/aws/r/default_route_table.html
 resource "aws_default_route_table" "tfmh_rtprv" {
-  default_route_table_id = "${aws_vpc.tfmh_vpc.default_route_table_id}"
+  default_route_table_id = aws_vpc.tfmh_vpc.default_route_table_id
   tags = {
     Name = format("%s_tfmh_rtprv", var.project_name)
     project_name = var.project_name
