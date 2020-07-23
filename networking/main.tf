@@ -6,7 +6,7 @@ resource "aws_vpc" "tfmh_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = { 
-    name = format("%s_vpc", var.project_name)
+    Name = format("%s_vpc", var.project_name)
     project_name = var.project_name
   }
 }
@@ -15,7 +15,7 @@ resource "aws_internet_gateway" "tfmh_igw" {
   vpc_id = aws_vpc.tfmh_vpc.id
 
   tags = { 
-    name = format("%s_igw", var.project_name)
+    Name = format("%s_igw", var.project_name)
     project_name = var.project_name
   }
 }
@@ -29,7 +29,7 @@ resource "aws_subnet" "tfmh_subpub" {
   availability_zone       = data.aws_availability_zones.available.names[count.index]
   
   tags = { 
-    name = format("%s_subpub_%d", var.project_name, count.index + 1)
+    Name = format("%s_subpub_%d", var.project_name, count.index + 1)
     project_name = var.project_name
   }
 }
@@ -43,7 +43,7 @@ resource "aws_subnet" "tfmh_subprv" {
   availability_zone       = data.aws_availability_zones.available.names[count.index]
 
   tags = { 
-    name = format("%s_subprv_%d", var.project_name, count.index + 1)
+    Name = format("%s_subprv_%d", var.project_name, count.index + 1)
     project_name = var.project_name
   }
 }
@@ -72,7 +72,7 @@ resource "aws_security_group" "tfmh_sg" {
   }
 
   tags = { 
-    name = format("%s_sgpub", var.project_name)
+    Name = format("%s_sgpub", var.project_name)
     project_name = var.project_name
   }
 }
@@ -85,7 +85,7 @@ resource "aws_route_table" "tfmh_rtpub" {
     gateway_id = "${aws_internet_gateway.tfmh_igw.id}"
   }
   tags = {
-    name = format("%s_tfmh_rtpub", var.project_name)
+    Name = format("%s_tfmh_rtpub", var.project_name)
     project_name = var.project_name
   }
 }
@@ -108,7 +108,7 @@ resource "aws_route_table_association" "tfmh_rtpubassoc" {
 resource "aws_default_route_table" "tfmh_rtprv" {
   default_route_table_id = "${aws_vpc.tfmh_vpc.default_route_table_id}"
   tags = {
-    name = format("%s_tfmh_rtprv", var.project_name)
+    Name = format("%s_tfmh_rtprv", var.project_name)
     project_name = var.project_name
   }
 }
