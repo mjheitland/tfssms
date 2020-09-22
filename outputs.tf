@@ -36,3 +36,6 @@ output "server_ids" {
 output "server_public_ips" {
   value = module.compute.server_public_ips
 }
+output "alb_dns" {
+  value = module.compute.alb_dns
+}

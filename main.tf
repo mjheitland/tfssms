@@ -1,5 +1,6 @@
 #--- root/main.tf ---
 provider "aws" {
+  region = "eu-west-1"
 }
 
 # deploy networking resources
@@ -22,6 +23,7 @@ module "compute" {
   key_name        = var.key_name
   public_key_path = var.public_key_path
   instance_type   = var.instance_type
+  vpc_id          = module.networking.vpc_id
   subpub_ids      = module.networking.subpub_ids
   sg_id           = module.networking.sg_id
 }

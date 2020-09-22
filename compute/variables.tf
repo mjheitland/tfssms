@@ -15,6 +15,10 @@ variable "instance_type" {
   description = "type of ec2 instance"
   type        = string
 }
+variable "vpc_id" {
+  description = "id of vpc"
+  type        = string
+}
 variable "subpub_ids" {
   description = "ids of public subnets"
   type        = list(string)
