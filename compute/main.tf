@@ -94,10 +94,20 @@ resource "aws_lb_target_group" "tfmh_lbtrggrp" {
   }  
 }
 
-resource "aws_lb_target_group_attachment" "tfmh_lbtrggrpatt" {
-  count            = length(var.subpub_ids)
+# resource "aws_lb_target_group_attachment" "tfmh_lbtrggrpatt" {
+#   count            = length(var.subpub_ids)
+# 
+#   target_group_arn = aws_lb_target_group.tfmh_lbtrggrp.arn
+#   target_id        = aws_instance.tfmh_server[count.index].id
+#   port             = 80
+# }
 
-  target_group_arn = aws_lb_target_group.tfmh_lbtrggrp.arn
-  target_id        = aws_instance.tfmh_server[count.index].id
-  port             = 80
+resource "null_resource" "register_targets"{
+  for_each = toset(var.subpub_ids)
+
+  provisioner "local-exec" {
+    command = "echo Hello '${each.key}'"
+  }
+
+  triggers = { build_number = timestamp() } # force TF to apply this null_resource every time!
 }
