@@ -27,5 +27,5 @@ service_ports = [
 
 #--- compute
 key_name        = "tfmh_key"
-public_key_path = "~/.ssh/id_rsa.pub"
+public_key_path = "./id_rsa.pub"
 instance_type   = "t2.micro"
