@@ -4,27 +4,42 @@ resource "aws_key_pair" "tfmh_keypair" {
   public_key = file(var.public_key_path)
 }
 
-data "aws_ami" "tfmh_server_ami" {
+data "aws_ami" "amazon_linux_2" {
   most_recent = true
   owners = ["amazon"]
   filter {
     name   = "name"
-    values = ["amzn-ami-hvm*-x86_64-gp2"]
+    values = ["amzn2-ami-hvm-2.0.*-x86_64-gp2"]
   }
-}
+  filter {
+      name   = "root-device-type"
+      values = ["ebs"]
+    }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }  
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }  
+}  
+
 data "template_file" "tfmh_userdata" {
   count = length(var.subpub_ids)
 
   template = file("${path.module}/userdata.tpl")
   vars = {
-    subnets = element(var.subpub_ids, count.index)
+    subnet = element(var.subpub_ids, count.index)
   }
 }
+
+#-- ec2
 resource "aws_instance" "tfmh_server" {
   count = length(var.subpub_ids)
 
   instance_type           = var.instance_type
-  ami                     = data.aws_ami.tfmh_server_ami.id
+  ami                     = data.aws_ami.amazon_linux_2.id
   key_name                = aws_key_pair.tfmh_keypair.id
   subnet_id               = element(var.subpub_ids, count.index)
   vpc_security_group_ids  = [var.sg_id]
