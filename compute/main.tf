@@ -6,20 +6,20 @@ resource "aws_key_pair" "tfssms_keypair" {
 
 data "aws_ami" "amazon_windows" {
   most_recent = true
-  owners = ["amazon"]
+  owners      = ["amazon"]
   filter {
     name   = "name"
     values = ["Windows_Server-2019-English-Full-Base*"]
   }
   filter {
-      name   = "root-device-type"
-      values = ["ebs"]
-    }
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
   filter {
     name   = "virtualization-type"
     values = ["hvm"]
-  }  
-}  
+  }
+}
 
 data "aws_caller_identity" "current" {}
 
@@ -39,14 +39,14 @@ data "template_file" "tfssms_userdata" {
 resource "aws_instance" "tfssms_server" {
   count = length(var.subpub_ids)
 
-  instance_type           = var.instance_type
-  ami                     = data.aws_ami.amazon_windows.id
-  key_name                = aws_key_pair.tfssms_keypair.id
-  subnet_id               = element(var.subpub_ids, count.index)
-  vpc_security_group_ids  = [var.sg_id]
-  user_data               = data.template_file.tfssms_userdata.*.rendered[count.index]
-  tags = { 
-    Name = format("%s_server_%d", var.project_name, count.index)
+  instance_type          = var.instance_type
+  ami                    = data.aws_ami.amazon_windows.id
+  key_name               = aws_key_pair.tfssms_keypair.id
+  subnet_id              = element(var.subpub_ids, count.index)
+  vpc_security_group_ids = [var.sg_id]
+  user_data              = data.template_file.tfssms_userdata.*.rendered[count.index]
+  tags = {
+    Name        = format("%s_server_%d", var.project_name, count.index)
     Environment = "CheckedBySecurity"
   }
 }

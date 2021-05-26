@@ -4,7 +4,7 @@ vpc_cidr     = "10.50.0.0/16"
 subpub_cidrs = [
   "10.50.101.0/24"
 ]
-access_ip     = "0.0.0.0/0"
+access_ip = "0.0.0.0/0"
 service_ports = [
   { # ssh
     from_port = 22,
@@ -23,9 +23,9 @@ service_ports = [
     to_port   = 443
   },
   { # MS SQL Server
-    from_port = 1433, 
+    from_port = 1433,
     to_port   = 1433
-  } 
+  }
 ]
 
 #--- compute

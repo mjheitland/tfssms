@@ -5,8 +5,8 @@ resource "aws_vpc" "tfssms_vpc" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
   enable_dns_support   = true
-  tags = { 
-    Name = format("%s_vpc", var.project_name)
+  tags = {
+    Name         = format("%s_vpc", var.project_name)
     project_name = var.project_name
   }
 }
@@ -14,22 +14,22 @@ resource "aws_vpc" "tfssms_vpc" {
 resource "aws_internet_gateway" "tfssms_igw" {
   vpc_id = aws_vpc.tfssms_vpc.id
 
-  tags = { 
-    Name = format("%s_igw", var.project_name)
+  tags = {
+    Name         = format("%s_igw", var.project_name)
     project_name = var.project_name
   }
 }
 
 resource "aws_subnet" "tfssms_subpub" {
-  count                   = length(var.subpub_cidrs)
+  count = length(var.subpub_cidrs)
 
   vpc_id                  = aws_vpc.tfssms_vpc.id
   cidr_block              = var.subpub_cidrs[count.index]
   map_public_ip_on_launch = true
   availability_zone       = data.aws_availability_zones.available.names[count.index]
-  
-  tags = { 
-    Name = format("%s_subpub_%d", var.project_name, count.index + 1)
+
+  tags = {
+    Name         = format("%s_subpub_%d", var.project_name, count.index + 1)
     project_name = var.project_name
   }
 }
@@ -39,9 +39,9 @@ resource "aws_security_group" "tfssms_sg" {
   description = "Used for access to the public instances"
   vpc_id      = aws_vpc.tfssms_vpc.id
   dynamic "ingress" {
-    for_each = [ for s in var.service_ports: {
+    for_each = [for s in var.service_ports : {
       from_port = s.from_port
-      to_port = s.to_port
+      to_port   = s.to_port
     }]
     content {
       from_port   = ingress.value.from_port
@@ -57,8 +57,8 @@ resource "aws_security_group" "tfssms_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = { 
-    Name = format("%s_sgpub", var.project_name)
+  tags = {
+    Name         = format("%s_sgpub", var.project_name)
     project_name = var.project_name
   }
 }
@@ -71,7 +71,7 @@ resource "aws_route_table" "tfssms_rtpub" {
     gateway_id = aws_internet_gateway.tfssms_igw.id
   }
   tags = {
-    Name = format("%s_tfssms_rtpub", var.project_name)
+    Name         = format("%s_tfssms_rtpub", var.project_name)
     project_name = var.project_name
   }
 }

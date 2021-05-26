@@ -5,8 +5,8 @@ provider "aws" {
 
 # deploy networking resources
 module "networking" {
-  source        = "./networking"
-  
+  source = "./networking"
+
   project_name  = var.project_name
   vpc_cidr      = var.vpc_cidr
   subpub_cidrs  = var.subpub_cidrs
@@ -16,8 +16,8 @@ module "networking" {
 
 # Deploy Compute Resources
 module "compute" {
-  source          = "./compute"
-  
+  source = "./compute"
+
   project_name    = var.project_name
   key_name        = var.key_name
   public_key_path = var.public_key_path

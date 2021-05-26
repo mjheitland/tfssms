@@ -7,7 +7,7 @@ variable "vpc_cidr" {
   description = "separate vpc for this project"
   type        = string
 }
-variable "subpub_cidrs" { 
+variable "subpub_cidrs" {
   description = "cidr blocks for public subnets"
   type        = list(string)
 }
