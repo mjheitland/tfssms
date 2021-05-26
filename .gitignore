@@ -1,6 +1,5 @@
-.terraform
 .DS_Store
 *.swp
+.terraform
 terraform.tfstate
 terraform.tfstate.backup
-

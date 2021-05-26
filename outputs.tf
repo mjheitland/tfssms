@@ -13,17 +13,11 @@ output "igw_id" {
 output "subpub_ids" {
   value = module.networking.subpub_ids
 }
-output "subprv_ids" {
-  value = module.networking.subprv_ids
-}
 output "sg_id" {
   value = module.networking.sg_id
 }
 output "rtpub_ids" {
   value = module.networking.rtpub_ids
-}
-output "rtprv_ids" {
-  value = module.networking.rtprv_ids
 }
 
 #--- compute
@@ -35,7 +29,4 @@ output "server_ids" {
 }
 output "server_public_ips" {
   value = module.compute.server_public_ips
-}
-output "alb_dns" {
-  value = module.compute.alb_dns
 }

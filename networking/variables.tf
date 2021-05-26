@@ -11,10 +11,6 @@ variable "subpub_cidrs" {
   description = "cidr blocks for public subnets"
   type        = list(string)
 }
-variable "subprv_cidrs" { 
-  description = "cidr blocks for private subnets"
-  type        = list(string)
-}
 variable "access_ip" {
   description = "cidr block for incoming traffic"
   type        = string
